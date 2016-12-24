@@ -6,9 +6,11 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/24 07:46:50 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/24 07:49:35 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/24 07:56:05 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		ft_isnumber(char *str)
 {
@@ -22,7 +24,10 @@ int		ft_isnumber(char *str)
 		if (str[i] == '-')
 		{
 			if (i == 0)
-				continue;
+			{
+				i++;
+				continue ;
+			}
 			else
 				return (0);
 		}
