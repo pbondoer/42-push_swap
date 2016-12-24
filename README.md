@@ -16,11 +16,11 @@ Code	| Instruction			| Action
 `ss`	| swap a + swap b		| both `sa` and `sb`
 `pa`	| push a				| moves the top element of stack b at the top of stack a
 `pb`	| push b				| moves the top element of stack a at the top of stack b
-`ra`	| rotate a				| shifts all elements of stack a from bottom to top (last becomes first)
-`rb`	| rotate b				| shifts all elements of stack b from bottom to top (last becomes first)
+`ra`	| rotate a				| shifts all elements of stack a from bottom to top
+`rb`	| rotate b				| shifts all elements of stack b from bottom to top
 `rr`	| rotate a + rotate b	| both `ra` and `rb`
-`rra`	| reverse rotate a		| shifts all elements of stack a from top to bottom (first becomes last)
-`rrb`	| reverse rotate b		| shifts all elements of stack b from top to bottom (first becomes last)
+`rra`	| reverse rotate a		| shifts all elements of stack a from top to bottom
+`rrb`	| reverse rotate b		| shifts all elements of stack b from top to bottom
 `rrr`	| reverse rotate a + reverse rotate b	| both `rra` and `rrb`
 
 ## Compiling
