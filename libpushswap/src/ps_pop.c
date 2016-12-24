@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_pos_to_array.c                                  :+:      :+:    :+:   */
+/*   ps_pop.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/24 09:28:00 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/24 13:09:59 by pbondoer         ###   ########.fr       */
+/*   Created: 2016/12/24 11:53:03 by pbondoer          #+#    #+#             */
+/*   Updated: 2016/12/24 13:08:35 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpushswap.h"
 
-int		ps_pos_to_array(t_stack *s, int pos)
+int		ps_pop(t_stack *s)
 {
-	if (!s || pos < 0 || pos >= s->size)
-		return (-1);
-	return ((s->start + (s->pos + pos) % s->size) % s->max);
+	int i;
+
+	i = ps_get(s, 0);
+	s->start = (s->start + s->pos + 1) % (s->max);
+	s->pos = 0;
+	s->size--;
+	return (i);
 }

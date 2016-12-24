@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_pos_to_array.c                                  :+:      :+:    :+:   */
+/*   ps_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/24 09:28:00 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/24 13:09:59 by pbondoer         ###   ########.fr       */
+/*   Created: 2016/12/24 11:34:53 by pbondoer          #+#    #+#             */
+/*   Updated: 2016/12/24 12:13:33 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpushswap.h"
+#include "libft.h"
 
-int		ps_pos_to_array(t_stack *s, int pos)
+void		ps_rotate(t_stack *s, int direction)
 {
-	if (!s || pos < 0 || pos >= s->size)
-		return (-1);
-	return ((s->start + (s->pos + pos) % s->size) % s->max);
+	if (!s || s->size == 0 || direction == 0)
+		return ;
+	direction %= s->size;
+	if (direction < 0)
+		direction += s->size;
+	s->pos = (s->pos + direction) % s->size;
 }

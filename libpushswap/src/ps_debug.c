@@ -1,34 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_new_stack.c                                     :+:      :+:    :+:   */
+/*   ps_debug.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/24 08:55:04 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/24 12:48:45 by pbondoer         ###   ########.fr       */
+/*   Created: 2016/12/24 12:06:16 by pbondoer          #+#    #+#             */
+/*   Updated: 2016/12/24 12:51:28 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "libpushswap.h"
+#include <stdio.h>
 
-t_stack		*ps_new_stack(int size, int array_size, int *values)
+void		ps_debug(t_stack *s)
 {
-	t_stack	*s;
+	int i;
 
-	if ((s = (t_stack *)ft_memalloc(sizeof(t_stack))) == NULL)
-		return (NULL);
-	s->max = size;
-	s->size = array_size;
-	s->start = array_size - size;
-	s->pos = 0;
-	if ((s->values = (int *)ft_memalloc(sizeof(int) * size)) == NULL)
+	i = 0;
+	while (i < s->max)
 	{
-		ft_memdel((void **)&s);
-		return (NULL);
+		ft_putnbr(s->values[i]);
+		ft_putchar(' ');
+		i++;
 	}
-	if (array_size > 0)
-		ft_memmove(s->values + s->pos, values, array_size * sizeof(int));
-	return (s);
+	ft_putchar('\n');
+	i = 0;
+	while (i < s->start + s->pos)
+	{
+		ft_putstr("  ");
+		i++;
+	}
+	ft_putchar('|');
+	ft_putchar('\n');
+	i = 0;
+	while (i < s->start)
+	{
+		ft_putstr("  ");
+		i++;
+	}
+	ft_putchar('I');
+	ft_putchar('\n');
+	printf("pos: %d\nsize: %d\nstart: %d\n\n", s->pos, s->size, s->start);
 }
